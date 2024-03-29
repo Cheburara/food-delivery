@@ -1,12 +1,15 @@
 package arroba.fooddelivery.Controller;
 
 import arroba.fooddelivery.DTO.StationDTO;
+
 import arroba.fooddelivery.Service.StationService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/stations")
@@ -27,5 +30,10 @@ public class StationController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Failed to import station data: " + e.getMessage());
         }
+    }
+    @GetMapping("/all")
+    public ResponseEntity<List<StationDTO>> getAllStationData() {
+        List<StationDTO> stationList =stationService.getAllStationData();
+        return ResponseEntity.ok(stationList);
     }
 }

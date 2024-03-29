@@ -1,6 +1,9 @@
 package arroba.fooddelivery.Service;
 
+import arroba.fooddelivery.DTO.StationDTO;
+
 import arroba.fooddelivery.Entity.Station;
+import arroba.fooddelivery.Entity.WeatherData;
 import arroba.fooddelivery.Mapper.EntityDtoMapper;
 import arroba.fooddelivery.Repository.StationRepository;
 import org.springframework.stereotype.Service;
@@ -13,6 +16,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -86,5 +90,9 @@ public class StationService {
             return Double.parseDouble(textContent);
         }
         return 0.0;
+    }
+    public List<StationDTO> getAllStationData() {
+        List<Station> stationList = stationRepository.findAll();
+        return entityDtoMapper.mapStationEntitiesToDTOs(stationList);
     }
 }
