@@ -2,6 +2,8 @@ package arroba.fooddelivery.Mapper;
 
 import arroba.fooddelivery.Entity.WeatherData;
 import arroba.fooddelivery.DTO.WeatherDataDTO;
+import arroba.fooddelivery.Entity.Station;
+import arroba.fooddelivery.DTO.StationDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,6 +24,17 @@ public class EntityDtoMapper {
         dto.setWindSpeed(entity.getWindSpeed());
         dto.setWeatherPhenomenon(entity.getWeatherPhenomenon());
         dto.setTimestamp(entity.getTimestamp().toLocalDate()); // Assuming LocalDateTime to LocalDate conversion
+        return dto;
+    }
+    public List<StationDTO> mapStationEntitiesToDTOs(List<Station> entities) {
+        return entities.stream().map(this::mapStationEntityToDTO).collect(Collectors.toList());
+    }
+
+    public StationDTO mapStationEntityToDTO(Station entity) {
+        StationDTO dto = new StationDTO();
+        dto.setName(entity.getName());
+        dto.setLongitude(entity.getLongitude());
+        dto.setLatitude(entity.getLatitude());
         return dto;
     }
 }
