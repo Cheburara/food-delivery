@@ -66,11 +66,6 @@ public class CalculationService {
             } else if (airTemperature >= -10.0 && airTemperature < 0.0) {
                 extraFee += 0.5; // ATEF = 0.5 €
             }
-            // test
-//            if (airTemperature >= 0.0) {
-//                extraFee += 5.0; // ATEF = 5 € for air temperature of 0°C or higher
-//            }
-
             // Calculate extra fee based on wind speed (only for Bike)
             if (vehicleType.equalsIgnoreCase("Bike")) {
                 if (windSpeed >= 10.0 && windSpeed <= 20.0) {
@@ -79,7 +74,6 @@ public class CalculationService {
                     throw new RuntimeException("Usage of selected vehicle type is forbidden due to high wind speed");
                 }
             }
-
             // Calculate extra fee based on weather phenomenon
             if (weatherPhenomenon != null) {
                 switch (weatherPhenomenon.toLowerCase()) {
@@ -96,10 +90,8 @@ public class CalculationService {
                         throw new RuntimeException("Usage of selected vehicle type is forbidden due to adverse weather conditions");
                 }
             }
-
             return extraFee;
         }
-
         // Return 0 if no extra fee is applicable
         return 0.0;
     }
