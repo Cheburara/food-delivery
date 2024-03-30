@@ -6,6 +6,8 @@ import arroba.fooddelivery.Entity.Station;
 import arroba.fooddelivery.DTO.StationDTO;
 import arroba.fooddelivery.Entity.VehicleType;
 import arroba.fooddelivery.DTO.VehicleDTO;
+import arroba.fooddelivery.Entity.DeliveryFee;
+import arroba.fooddelivery.DTO.DeliveryFeeDTO;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -46,6 +48,19 @@ public class EntityDtoMapper {
     public VehicleDTO mapVehicleTypeEntityToDTO(VehicleType entity) {
         VehicleDTO dto = new VehicleDTO();
         dto.setType(entity.getType());
+        return dto;
+    }
+    public List<DeliveryFeeDTO> mapDeliveryFeeEntitiesToDTOs(List<DeliveryFee> entities) {
+        return entities.stream().map(this::mapDeliveryFeeEntityToDTO).collect(Collectors.toList());
+    }
+    public DeliveryFeeDTO mapDeliveryFeeEntityToDTO(DeliveryFee entity) {
+        DeliveryFeeDTO dto = new DeliveryFeeDTO();
+        dto.setId(entity.getId());
+        dto.setStationId(entity.getStation().getId());
+        dto.setVehicleTypeId(entity.getVehicleType().getId());
+        dto.setWeatherDataId(entity.getWeatherData().getId());
+        dto.setBaseFee(entity.getBaseFee());
+        dto.setExtraFee(entity.getExtraFee());
         return dto;
     }
 }

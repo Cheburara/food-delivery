@@ -2,10 +2,9 @@ package arroba.fooddelivery.Service;
 
 import arroba.fooddelivery.Entity.VehicleType;
 import arroba.fooddelivery.Repository.VehicleTypeRepository;
-import arroba.fooddelivery.Mapper.EntityDtoMapper;
 import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.Arrays;
 import java.util.List;

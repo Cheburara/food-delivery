@@ -18,8 +18,9 @@ import java.time.LocalDateTime;
 
 
 public class WeatherData {
-    public WeatherData(String stationName, String wmoCode, Double airTemperature, Double windSpeed, String weatherPhenomenon, LocalDateTime timestamp) {
+    public WeatherData(String stationName, String city, String wmoCode, Double airTemperature, Double windSpeed, String weatherPhenomenon, LocalDateTime timestamp) {
         this.stationName = stationName;
+        this.city = city;
         this.wmoCode = wmoCode;
         this.airTemperature = airTemperature;
         this.windSpeed = windSpeed;
@@ -32,6 +33,9 @@ public class WeatherData {
 
     @Column(name = "station_name")
     private String stationName;
+
+    @Column(name = "city")
+    private String city;
 
     @Column(name = "wmo_code")
     private String wmoCode;

@@ -20,7 +20,7 @@ public class WeatherDataController {
     public WeatherDataController(WeatherDataService weatherDataService) {
         this.weatherDataService = weatherDataService;
     }
-
+    // method to manually trigger importWeatherData
     @GetMapping("/import")
     public ResponseEntity<String> importWeatherData() {
         try {
@@ -32,6 +32,7 @@ public class WeatherDataController {
         }
     }
 
+    // method to retrieving all weather data -- testing purpose
     @GetMapping("/all")
     public ResponseEntity<List<WeatherDataDTO>> getAllWeatherData() {
         List<WeatherDataDTO> weatherDataList = weatherDataService.getAllWeatherData();

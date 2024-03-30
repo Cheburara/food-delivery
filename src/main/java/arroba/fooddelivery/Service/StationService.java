@@ -3,13 +3,13 @@ package arroba.fooddelivery.Service;
 import arroba.fooddelivery.DTO.StationDTO;
 
 import arroba.fooddelivery.Entity.Station;
-import arroba.fooddelivery.Entity.WeatherData;
 import arroba.fooddelivery.Mapper.EntityDtoMapper;
 import arroba.fooddelivery.Repository.StationRepository;
 import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
+import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -38,6 +38,7 @@ public class StationService {
     }
 
     @Transactional
+    @PostConstruct
     public void importStationData() {
         try {
             HttpClient client = HttpClient.newHttpClient();

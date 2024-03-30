@@ -21,6 +21,7 @@ public class StationController {
         this.stationService = stationService;
     }
 
+    // method to manually trigger importStationData
     @GetMapping("/import")
     public ResponseEntity<String> importStationData() {
         try {
@@ -31,6 +32,7 @@ public class StationController {
                     .body("Failed to import station data: " + e.getMessage());
         }
     }
+    // method to retrieving all station data -- testing purpose
     @GetMapping("/all")
     public ResponseEntity<List<StationDTO>> getAllStationData() {
         List<StationDTO> stationList =stationService.getAllStationData();

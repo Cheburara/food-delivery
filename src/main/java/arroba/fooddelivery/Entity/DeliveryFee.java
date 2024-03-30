@@ -4,10 +4,27 @@ import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
 
 public class DeliveryFee {
+
+    public DeliveryFee(Station station, VehicleType vehicleType, WeatherData weatherData, Double baseFee, Double extraFee) {
+        this.station = station;
+        this.vehicleType = vehicleType;
+        this.weatherData = weatherData;
+        this.baseFee = baseFee;
+        this.extraFee = extraFee;
+    }
 
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
